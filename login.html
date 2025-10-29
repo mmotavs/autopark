@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Колеса Свободы</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="login.js"></script>
+</head>
+<body>
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип компании" class="logo-img">
+            <div class="logo-text">Колеса Свободы</div>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Каталог</a>
+            <a href="booking.html">Бронирование</a>
+            <a href="trips.html">Поездки</a>
+            <a href="login.html" class="active">Личный кабинет</a>
+        </nav>
+    </header>
+
+    <!-- Контент -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="tabs">
+                <button class="tab active" id="login-tab">Войти</button>
+                <button class="tab" id="register-tab">Зарегистрироваться</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="login-form" class="form active">
+                <h2>Вход</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" placeholder="Введите пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Войти</button>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="register-form" class="form">
+                <h2>Регистрация</h2>
+                <div class="form-group">
+                    <label for="reg-name">Имя</label>
+                    <input type="text" id="reg-name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Телефон</label>
+                    <input type="tel" id="reg-phone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Пароль</label>
+                    <input type="password" id="reg-password" placeholder="Придумайте пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Футер -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <!-- О компании -->
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>
+                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
+                    создающая незабываемые впечатления от каждой поездки.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+
+            <!-- Услуги -->
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="cars.html">Автопарк</a></li>
+                    <li><a href="booking.html">Онлайн бронирование</a></li>
+                    <li><a href="trips.html">Маршруты поездок</a></li>
+                    <li><a href="#">Корпоративная аренда</a></li>
+                    <li><a href="#">Долгосрочная аренда</a></li>
+                </ul>
+            </div>
+
+            <!-- Информация -->
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#">Условия аренды</a></li>
+                    <li><a href="#">Правила и положения</a></li>
+                    <li><a href="#">Страхование</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                    <li><a href="index.html#about-section">Наша команда</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
+                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
+                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
+                    <li><a href="#">Режим работы: 24/7</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Нижняя часть футера -->
+        <div class="footer-bottom">
+            <p>© 2025 Колеса Свободы. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Карта сайта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="login.js"></script>
+
+    <script>
+        // Скрытие/показ шапки при прокрутке
+        let lastScrollTop = 0;
+        const scrollThreshold = 150;
+        const navbar = document.querySelector('.navbar');
+        
+        if (navbar) {
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop <= scrollThreshold) {
+                    navbar.classList.remove('hidden');
+                } 
+                else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    navbar.classList.add('hidden');
+                } 
+                else if (scrollTop < lastScrollTop) {
+                    navbar.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+        }
+    </script>
+</body>
+</html>

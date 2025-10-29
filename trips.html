@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поездки | Колеса Свободы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип компании" class="logo-img">
+            <div class="logo-text">Колеса Свободы</div>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Каталог</a>
+            <a href="booking.html">Бронирование</a>
+            <a href="trips.html" class="active">Поездки</a>
+            <a href="login.html">Личный кабинет</a>
+        </nav>
+    </header>
+
+    <!-- Контент -->
+    <section class="trips-section">
+        <h1>Мои поездки</h1>
+        <p class="trips-subtitle">История ваших бронирований</p>
+
+        <div class="trips-table-wrapper">
+            <table class="trips-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Автомобиль</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Toyota Camry</td>
+                        <td>12.09.2025</td>
+                        <td>15.09.2025</td>
+                        <td><span class="status completed">Завершено</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>KIA Sportage</td>
+                        <td>01.10.2025</td>
+                        <td>07.10.2025</td>
+                        <td><span class="status active">Активно</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>BMW X5</td>
+                        <td>20.10.2025</td>
+                        <td>25.10.2025</td>
+                        <td><span class="status pending">Ожидает подтверждения</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+   <!-- Футер -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <!-- О компании -->
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>
+                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
+                    создающая незабываемые впечатления от каждой поездки.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+
+            <!-- Услуги -->
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="cars.html">Автопарк</a></li>
+                    <li><a href="booking.html">Онлайн бронирование</a></li>
+                    <li><a href="trips.html">Маршруты поездок</a></li>
+                    <li><a href="#">Корпоративная аренда</a></li>
+                    <li><a href="#">Долгосрочная аренда</a></li>
+                </ul>
+            </div>
+
+            <!-- Информация -->
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#">Условия аренды</a></li>
+                    <li><a href="#">Правила и положения</a></li>
+                    <li><a href="#">Страхование</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                    <li><a href="index.html#about-section">Наша команда</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
+                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
+                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
+                    <li><a href="#">Режим работы: 24/7</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Нижняя часть футера -->
+        <div class="footer-bottom">
+            <p>© 2025 Колеса Свободы. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Карта сайта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="login.js"></script>
+
+    <script>
+        // Скрытие/показ шапки при прокрутке
+        let lastScrollTop = 0;
+        const scrollThreshold = 150;
+        const navbar = document.querySelector('.navbar');
+        
+        if (navbar) {
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop <= scrollThreshold) {
+                    navbar.classList.remove('hidden');
+                } 
+                else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                    navbar.classList.add('hidden');
+                } 
+                else if (scrollTop < lastScrollTop) {
+                    navbar.classList.remove('hidden');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+        }
+    </script>
+</body>
+</html>

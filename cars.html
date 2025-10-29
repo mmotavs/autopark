@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Автопарк — Колеса Свободы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип Колеса Свободы" class="logo-img">
+            <div class="logo-text">Колеса Свободы</div>
+        </div>
+
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html" class="active">Каталог</a>
+            <a href="booking.html">Бронирование</a>
+            <a href="trips.html">Поездки</a>
+            <a href="login.html">Личный кабинет</a>
+        </nav>
+    </header>
+
+    <!-- Раздел автопарка -->
+    <section class="cars-section">
+        <h1>Каталог автомобилей</h1>
+        <p class="cars-intro">
+            Мы предлагаем широкий выбор автомобилей для любых целей — от деловых поездок до путешествий. 
+            Все машины проходят регулярное техническое и находятся в идеальном состоянии.
+        </p>
+
+        <!-- Фильтр (пока неактивный) -->
+        <div class="cars-filter">
+            <select>
+                <option value="">Тип авто</option>
+                <option value="sedan">Седан</option>
+                <option value="suv">Внедорожник</option>
+                <option value="sport">Спортивный</option>
+                <option value="economy">Эконом</option>
+            </select>
+
+            <select>
+                <option value="">Сортировать по</option>
+                <option value="price-low">Цене: по возрастанию</option>
+                <option value="price-high">Цене: по убыванию</option>
+            </select>
+        </div>
+
+        <!-- Сетка автомобилей -->
+        <div class="cars-grid">
+            <!-- Машина 1 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/b9/c9/a2/b9c9a22952a7febe2b8fff53463e3ac5.jpg" alt="Toyota Camry" class="car-img">
+                <h3>Toyota Camry</h3>
+                <p>Комфортный седан бизнес-класса для городских поездок и деловых встреч.</p>
+                <div class="car-details">
+                    <span>Седан</span>
+                    <span>от 4200 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 2 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/6d/35/d5/6d35d5aefc6e8968bfea88264bae49b5.jpg" alt="BMW X5" class="car-img">
+                <h3>BMW X5</h3>
+                <p>Престижный внедорожник с максимальным комфортом и мощным двигателем.</p>
+                <div class="car-details">
+                    <span>Внедорожник</span>
+                    <span>от 8500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 3 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/05/60/27/0560274d90d8f2f606c0fc29478a2c0b.jpg" alt="Mazda CX-5" class="car-img">
+                <h3>Mazda CX-5</h3>
+                <p>Стильный кроссовер с отличной управляемостью и высоким уровнем безопасности.</p>
+                <div class="car-details">
+                    <span>Кроссовер</span>
+                    <span>от 5000 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 4 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/85/58/2e/85582e48c7274876b45aa0e084f272c6.jpg" alt="Kia Rio" class="car-img">
+                <h3>Kia Rio</h3>
+                <p>Надежный и экономичный автомобиль для повседневных поездок по городу.</p>
+                <div class="car-details">
+                    <span>Эконом</span>
+                    <span>от 2500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 5 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/41/e3/03/41e303628044e0b5b38f2f5248c2410c.jpg" alt="Mercedes E-Class" class="car-img">
+                <h3>Mercedes E-Class</h3>
+                <p>Элегантный седан премиум-класса для особых случаев и бизнес-поездок.</p>
+                <div class="car-details">
+                    <span>Бизнес</span>
+                    <span>от 7800 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 6 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/2a/d7/a9/2ad7a95caf42b7caa074738fc8517452.jpg" alt="Porsche 911" class="car-img">
+                <h3>Porsche 911</h3>
+                <p>Легендарный спортивный автомобиль для тех, кто выбирает скорость и стиль.</p>
+                <div class="car-details">
+                    <span>Спортивный</span>
+                    <span>от 12500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <!-- О компании -->
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>
+                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
+                    создающая незабываемые впечатления от каждой поездки.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+
+            <!-- Услуги -->
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="cars.html">Автопарк</a></li>
+                    <li><a href="booking.html">Онлайн бронирование</a></li>
+                    <li><a href="trips.html">Маршруты поездок</a></li>
+                    <li><a href="#">Корпоративная аренда</a></li>
+                    <li><a href="#">Долгосрочная аренда</a></li>
+                </ul>
+            </div>
+
+            <!-- Информация -->
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#">Условия аренды</a></li>
+                    <li><a href="#">Правила и положения</a></li>
+                    <li><a href="#">Страхование</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                    <li><a href="index.html#about-section">Наша команда</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
+                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
+                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
+                    <li><a href="#">Режим работы: 24/7</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Нижняя часть футера -->
+        <div class="footer-bottom">
+            <p>© 2025 Колеса Свободы. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Карта сайта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="login.js"></script>
+
+<script>
+     // Скрытие/показ шапки при прокрутке
+    let lastScrollTop = 0;
+    const scrollThreshold = 150;
+    const navbar = document.querySelector('.navbar');
+    
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop <= scrollThreshold) {
+                navbar.classList.remove('hidden');
+            } 
+            else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                navbar.classList.add('hidden');
+            } 
+            else if (scrollTop < lastScrollTop) {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+    }
+</script>
+</body>
+</html>
