@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Панель администратора</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <nav class="admin-nav">
-        <div class="nav-header">
-            <h2>Панель администратора</h2>
-            <span id="adminName"></span>
-        </div>
-        <ul>
-            <li><a href="/" class="nav-link">Главная</a></li>
-            <li><a href="#" onclick="showBookings()" class="nav-link">Все заявки</a></li>
-            <li><a href="#" onclick="showMaintenance()" class="nav-link">Техобслуживание</a></li>
-            <li><a href="#" onclick="handleLogout()" class="nav-link">Выйти</a></li>
-        </ul>
-    </nav>
+{% extends "base.html" %}
+
+{% block title %}Панель администратора | CarRental{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
 
     <div class="admin-content">
         <div id="bookings-section" style="display: none;">

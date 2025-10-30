@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Автопарк — Колеса Свободы</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <!-- Навигация -->
-    <header class="navbar">
-        <div class="navbar-left">
-            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип Колеса Свободы" class="logo-img">
-            <div class="logo-text">Колеса Свободы</div>
-        </div>
+{% extends "base.html" %}
 
-        <nav class="menu">
-            <a href="index.html">Главная</a>
-            <a href="cars.html" class="active">Каталог</a>
-            <a href="booking.html">Бронирование</a>
-            <a href="trips.html">Поездки</a>
-            <a href="login.html">Личный кабинет</a>
-        </nav>
-    </header>
+{% block title %}Автомобили | CarRental{% endblock %}
+
+{% block content %}
 
     <!-- Раздел автопарка -->
     <section class="cars-section">
@@ -217,5 +198,4 @@
         }, false);
     }
 </script>
-</body>
-</html>
+{% endblock %}
