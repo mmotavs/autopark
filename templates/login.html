@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Поездки | Колеса Свободы</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Личный кабинет | Колеса Свободы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
 </head>
 <body>
     <!-- Навигация -->
@@ -17,55 +18,58 @@
             <a href="index.html">Главная</a>
             <a href="cars.html">Каталог</a>
             <a href="booking.html">Бронирование</a>
-            <a href="trips.html" class="active">Поездки</a>
-            <a href="login.html">Личный кабинет</a>
+            <a href="trips.html">Поездки</a>
+            <a href="login.html" class="active">Личный кабинет</a>
         </nav>
     </header>
 
     <!-- Контент -->
-    <section class="trips-section">
-        <h1>Мои поездки</h1>
-        <p class="trips-subtitle">История ваших бронирований</p>
+    <section class="login-section">
+        <div class="login-container">
+            <div class="tabs">
+                <button class="tab active" id="login-tab">Войти</button>
+                <button class="tab" id="register-tab">Зарегистрироваться</button>
+            </div>
 
-        <div class="trips-table-wrapper">
-            <table class="trips-table">
-                <thead>
-                    <tr>
-                        <th>№</th>
-                        <th>Автомобиль</th>
-                        <th>Дата начала</th>
-                        <th>Дата окончания</th>
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Toyota Camry</td>
-                        <td>12.09.2025</td>
-                        <td>15.09.2025</td>
-                        <td><span class="status completed">Завершено</span></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>KIA Sportage</td>
-                        <td>01.10.2025</td>
-                        <td>07.10.2025</td>
-                        <td><span class="status active">Активно</span></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>BMW X5</td>
-                        <td>20.10.2025</td>
-                        <td>25.10.2025</td>
-                        <td><span class="status pending">Ожидает подтверждения</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <!-- Форма входа -->
+            <form id="login-form" class="form active">
+                <h2>Вход</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" placeholder="Введите пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Войти</button>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="register-form" class="form">
+                <h2>Регистрация</h2>
+                <div class="form-group">
+                    <label for="reg-name">Имя</label>
+                    <input type="text" id="reg-name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-phone">Телефон</label>
+                    <input type="tel" id="reg-phone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Пароль</label>
+                    <input type="password" id="reg-password" placeholder="Придумайте пароль" required>
+                </div>
+                <button type="submit" class="btn-primary">Зарегистрироваться</button>
+            </form>
         </div>
     </section>
 
-   <!-- Футер -->
+    <!-- Футер -->
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-main">

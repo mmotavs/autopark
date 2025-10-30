@@ -1,0 +1,63 @@
+.admin-nav {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    width: 250px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.nav-header {
+    margin-bottom: 2rem;
+}
+
+.nav-header h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.admin-nav .nav-link:hover {
+    background-color: #34495e;
+}
+
+.admin-content {
+    margin-left: 270px;
+    padding: 2rem;
+}
+
+.booking-card, .maintenance-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-card h4, .maintenance-card h4 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+#adminName {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}

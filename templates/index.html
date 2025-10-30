@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Колеса Свободы | Автопарк | Москва</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <!-- Навигация -->
@@ -54,6 +54,7 @@
         </div>
         <!-- Раздел "Наша команда" -->
 <section class="team">
+    <div class="team-content">
     <h2>Наша команда</h2>
     <p class="team-intro">
         Наш автопарк «Колеса Свободы» — это не просто автомобили, а команда профессионалов, 
@@ -102,6 +103,7 @@
             <h4>Игорь Петров</h4>
             <p class="role">Механик</p>
         </div>
+    </div>
     </div>
 </section>
 
@@ -198,7 +200,7 @@
     </div>
 </footer>
 
-<script src="login.js"></script>
+<script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
 
 <script>
 // Пользовательская функция для очень плавной прокрутки
