@@ -14,47 +14,19 @@ def init_admin(app):
 def get_all_bookings():
     """Получение всех заявок на обслуживание (только для администратора)"""
     try:
-        cur = mysql.connection.cursor()
-        cur.execute("""
-            SELECT 
-                b.booking_id,
-                b.start_date,
-                b.end_date,
-                b.status,
-                b.notes,
-                c.first_name as client_first_name,
-                c.last_name as client_last_name,
-                c.phone as client_phone,
-                cars.make,
-                cars.model,
-                cars.plate_number
-            FROM bookings b
-            JOIN clients c ON b.client_id = c.client_id
-            JOIN cars ON b.car_id = cars.car_id
-            ORDER BY b.created_at DESC
-        """)
-        
-        bookings = cur.fetchall()
-        cur.close()
-        
-        return jsonify([{
-            'id': booking[0],
-            'start_date': booking[1].isoformat() if booking[1] else None,
-            'end_date': booking[2].isoformat() if booking[2] else None,
-            'status': booking[3],
-            'notes': booking[4],
-            'client': {
-                'first_name': booking[5],
-                'last_name': booking[6],
-                'phone': booking[7]
-            },
-            'car': {
-                'make': booking[8],
-                'model': booking[9],
-                'plate_number': booking[10]
+        # Заглушка: возвращаем небольшой список фиктивных заявок для фронтенда
+        sample = [
+            {
+                'id': 1,
+                'start_date': '2025-11-01T09:00:00',
+                'end_date': '2025-11-05T18:00:00',
+                'status': 'pending',
+                'notes': 'Тестовая заявка',
+                'client': {'first_name': 'Иван', 'last_name': 'Иванов', 'phone': '+79990001122'},
+                'car': {'make': 'Toyota', 'model': 'Camry', 'plate_number': 'A123BC'}
             }
-        } for booking in bookings])
-        
+        ]
+        return jsonify(sample)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -63,32 +35,11 @@ def get_all_bookings():
 def get_maintenance_records():
     """Получение всех записей о техобслуживании (только для администратора)"""
     try:
-        cur = mysql.connection.cursor()
-        cur.execute("""
-            SELECT 
-                cars.make,
-                cars.model,
-                cars.plate_number,
-                cars.year,
-                cars.mileage,
-                cars.status
-            FROM cars
-            ORDER BY cars.created_at DESC
-        """)
-        
-        maintenance = cur.fetchall()
-        cur.close()
-        
-        return jsonify([{
-            'car': {
-                'make': record[0],
-                'model': record[1],
-                'plate_number': record[2],
-                'year': record[3],
-                'mileage': record[4],
-                'status': record[5]
-            }
-        } for record in maintenance])
-        
+        # Заглушка: возвращаем список автомобилей и их статусов
+        sample = [
+            {'car': {'make': 'Toyota', 'model': 'Camry', 'plate_number': 'A123BC', 'year': 2019, 'mileage': 50000, 'status': 'available'}},
+            {'car': {'make': 'BMW', 'model': 'X5', 'plate_number': 'B321CD', 'year': 2020, 'mileage': 30000, 'status': 'in_service'}}
+        ]
+        return jsonify(sample)
     except Exception as e:
         return jsonify({'error': str(e)}), 500

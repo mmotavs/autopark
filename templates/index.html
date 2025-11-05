@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Главная | CarRental{% endblock %}
+{% block title %}Главная | Аренда автомобилей | Колеса свободы{% endblock %}
 
 {% block content %}
 
@@ -26,10 +26,10 @@
                 Мы предоставляем автомобили в аренду для любых целей: от деловых встреч до дальних путешествий.
             </p>
             <ul>
-                <li>🛠 Регулярное техническое обслуживание автомобилей</li>
-                <li>💬 Поддержка клиентов 24/7</li>
-                <li>📱 Удобное онлайн-бронирование</li>
-                <li>🚘 Большой выбор современных моделей</li>
+                <li>Регулярное техническое обслуживание автомобилей</li>
+                <li>Поддержка и связь с клиентами 24/7</li>
+                <li>Удобное онлайн-бронирование</li>
+                <li>Большой выбор современных моделей</li>
             </ul>
         </div>
         <!-- Раздел "Наша команда" -->
@@ -44,7 +44,7 @@
     <!-- Директора -->
     <div class="directors">
         <div class="person-card">
-            <div class="photo-placeholder">[ Фото Марии Александровны Мочаловой ]</div>
+            <div class="photo-placeholder">[ Фото ]</div>
             <h3>Мария Александровна Мочалова</h3>
             <p class="role">Директор</p>
             <p class="bio">
@@ -54,7 +54,7 @@
         </div>
 
         <div class="person-card">
-            <div class="photo-placeholder">[ Фото Марии Александровны Сарухановой ]</div>
+            <div class="photo-placeholder">[ Фото ]</div>
             <h3>Мария Александровна Саруханова</h3>
             <p class="role">Директор</p>
             <p class="bio">
@@ -67,19 +67,19 @@
     <h3 class="team-subtitle">Наши сотрудники</h3>
     <div class="employees">
         <div class="person-card small">
-            <div class="photo-placeholder">[ Фото оператора ]</div>
+            <div class="photo-placeholder">[ Фото ]</div>
             <h4>Алексей Иванов</h4>
             <p class="role">Оператор</p>
         </div>
 
         <div class="person-card small">
-            <div class="photo-placeholder">[ Фото администратора ]</div>
+            <div class="photo-placeholder">[ Фото ]</div>
             <h4>Екатерина Смирнова</h4>
             <p class="role">Администратор</p>
         </div>
 
         <div class="person-card small">
-            <div class="photo-placeholder">[ Фото механика ]</div>
+            <div class="photo-placeholder">[ Фото ]</div>
             <h4>Игорь Петров</h4>
             <p class="role">Механик</p>
         </div>
@@ -113,72 +113,7 @@
         </form>
     </section>
 
-   <!-- Футер - замените весь блок <footer> на этот код -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-main">
-            <!-- О компании -->
-            <div class="footer-section">
-                <h3>О компании</h3>
-                <p>
-                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
-                    создающая незабываемые впечатления от каждой поездки.
-                </p>
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="Twitter">🐦</a>
-                    <a href="#" aria-label="LinkedIn">💼</a>
-                </div>
-            </div>
-
-            <!-- Услуги -->
-            <div class="footer-section">
-                <h3>Услуги</h3>
-                <ul>
-                    <li><a href="cars.html">Автопарк</a></li>
-                    <li><a href="booking.html">Онлайн бронирование</a></li>
-                    <li><a href="trips.html">Маршруты поездок</a></li>
-                    <li><a href="#">Корпоративная аренда</a></li>
-                    <li><a href="#">Долгосрочная аренда</a></li>
-                </ul>
-            </div>
-
-            <!-- Информация -->
-            <div class="footer-section">
-                <h3>Информация</h3>
-                <ul>
-                    <li><a href="#">Условия аренды</a></li>
-                    <li><a href="#">Правила и положения</a></li>
-                    <li><a href="#">Страхование</a></li>
-                    <li><a href="#">Часто задаваемые вопросы</a></li>
-                    <li><a href="#">Наша команда</a></li>
-                </ul>
-            </div>
-
-            <!-- Контакты -->
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <ul>
-                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
-                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
-                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
-                    <li><a href="#">Режим работы: 24/7</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Нижняя часть футера -->
-        <div class="footer-bottom">
-            <p>© 2025 Колеса Свободы. Все права защищены.</p>
-            <div class="footer-links">
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">Условия использования</a>
-                <a href="#">Карта сайта</a>
-            </div>
-        </div>
-    </div>
-</footer>
+   
 
 <script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
 
@@ -229,29 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Скрытие/показ шапки при прокрутке
-    let lastScrollTop = 0;
-    const scrollThreshold = 150;
-    const navbar = document.querySelector('.navbar');
-    
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop <= scrollThreshold) {
-                navbar.classList.remove('hidden');
-            } 
-            else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-                navbar.classList.add('hidden');
-            } 
-            else if (scrollTop < lastScrollTop) {
-                navbar.classList.remove('hidden');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, false);
-    }
 });
 </script>
 {% endblock %}

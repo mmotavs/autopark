@@ -33,75 +33,33 @@ def hash_password(password):
 
 @auth.route('/api/register', methods=['POST'])
 def register():
-    try:
-        data = request.get_json()
-        email = data.get('email')
-        password = data.get('password')
-        first_name = data.get('first_name')
-        last_name = data.get('last_name')
-        phone = data.get('phone')
-        
-        if not all([email, password, first_name, last_name, phone]):
-            return jsonify({'error': 'Все поля обязательны'}), 400
+    # Заглушка регистрации: проверяем входные данные, но не используем БД.
+    data = request.get_json() or {}
+    email = data.get('email')
+    password = data.get('password')
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
+    phone = data.get('phone')
 
-        cur = mysql.connection.cursor()
-        
-        cur.execute("SELECT id FROM clients WHERE email = %s", (email,))
-        if cur.fetchone():
-            return jsonify({'error': 'Email уже зарегистрирован'}), 400
+    if not all([email, password, first_name, last_name, phone]):
+        return jsonify({'error': 'Все поля обязательны'}), 400
 
-        hashed_password = hash_password(password)
-        cur.execute("""
-            INSERT INTO clients (email, password, first_name, last_name, phone, status, created_at)
-            VALUES (%s, %s, %s, %s, %s, 'user', NOW())
-        """, (email, hashed_password, first_name, last_name, phone))
-        
-        mysql.connection.commit()
-        cur.close()
-        
-        return jsonify({'message': 'Регистрация успешна'}), 201
-        
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    return jsonify({'message': 'Регистрация (заглушка) успешна'}), 201
 
 @auth.route('/api/login', methods=['POST'])
 def login():
-    try:
-        data = request.get_json()
-        email = data.get('email')
-        password = data.get('password')
-        
-        if not email or not password:
-            return jsonify({'error': 'Email и пароль обязательны'}), 400
+    # Заглушка логина: не обращаемся к БД, устанавливаем простую сессию
+    data = request.get_json() or {}
+    email = data.get('email')
+    password = data.get('password')
 
-        cur = mysql.connection.cursor()
-        
-        hashed_password = hash_password(password)
-        cur.execute("""
-            SELECT client_id, status, first_name, last_name 
-            FROM clients 
-            WHERE email = %s AND password = %s
-        """, (email, hashed_password))
-        
-        user = cur.fetchone()
-        cur.close()
-        
-        if user:
-            session['user_id'] = user[0]
-            session['user_role'] = user[1]
-            return jsonify({
-                'message': 'Вход выполнен успешно',
-                'user': {
-                    'id': user[0],
-                    'role': user[1],
-                    'name': f"{user[2]} {user[3]}"
-                }
-            })
-        
-        return jsonify({'error': 'Неверный email или пароль'}), 401
-        
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    if not email or not password:
+        return jsonify({'error': 'Email и пароль обязательны'}), 400
+
+    session['user_id'] = 1
+    session['user_role'] = 'admin' if 'admin' in (email or '').lower() else 'user'
+
+    return jsonify({'message': 'Вход (заглушка) выполнен успешно', 'user': {'id': session['user_id'], 'role': session['user_role']}})
 
 @auth.route('/api/logout', methods=['POST'])
 def logout():

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Автомобили | CarRental{% endblock %}
+{% block title %}Автомобили | Аренда автомобилей | Колеса свободы{% endblock %}
 
 {% block content %}
 
@@ -104,98 +104,4 @@
             </div>
         </div>
     </section>
-
-    <!-- Футер -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-main">
-            <!-- О компании -->
-            <div class="footer-section">
-                <h3>О компании</h3>
-                <p>
-                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
-                    создающая незабываемые впечатления от каждой поездки.
-                </p>
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="Twitter">🐦</a>
-                    <a href="#" aria-label="LinkedIn">💼</a>
-                </div>
-            </div>
-
-            <!-- Услуги -->
-            <div class="footer-section">
-                <h3>Услуги</h3>
-                <ul>
-                    <li><a href="cars.html">Автопарк</a></li>
-                    <li><a href="booking.html">Онлайн бронирование</a></li>
-                    <li><a href="trips.html">Маршруты поездок</a></li>
-                    <li><a href="#">Корпоративная аренда</a></li>
-                    <li><a href="#">Долгосрочная аренда</a></li>
-                </ul>
-            </div>
-
-            <!-- Информация -->
-            <div class="footer-section">
-                <h3>Информация</h3>
-                <ul>
-                    <li><a href="#">Условия аренды</a></li>
-                    <li><a href="#">Правила и положения</a></li>
-                    <li><a href="#">Страхование</a></li>
-                    <li><a href="#">Часто задаваемые вопросы</a></li>
-                    <li><a href="index.html#about-section">Наша команда</a></li>
-                </ul>
-            </div>
-
-            <!-- Контакты -->
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <ul>
-                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
-                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
-                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
-                    <li><a href="#">Режим работы: 24/7</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Нижняя часть футера -->
-        <div class="footer-bottom">
-            <p>© 2025 Колеса Свободы. Все права защищены.</p>
-            <div class="footer-links">
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">Условия использования</a>
-                <a href="#">Карта сайта</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
-
-<script>
-     // Скрытие/показ шапки при прокрутке
-    let lastScrollTop = 0;
-    const scrollThreshold = 150;
-    const navbar = document.querySelector('.navbar');
-    
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop <= scrollThreshold) {
-                navbar.classList.remove('hidden');
-            } 
-            else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-                navbar.classList.add('hidden');
-            } 
-            else if (scrollTop < lastScrollTop) {
-                navbar.classList.remove('hidden');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, false);
-    }
-</script>
 {% endblock %}

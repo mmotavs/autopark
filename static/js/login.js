@@ -1,46 +1,82 @@
-async function handleLogin(event) {
-    event.preventDefault();
-    console.log('Попытка входа...');
-    
-    const formData = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-    };
+document.addEventListener("DOMContentLoaded", () => {
+    const loginTab = document.getElementById("login-tab");
+    const registerTab = document.getElementById("register-tab");
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
 
-    const errorMessage = document.getElementById('error-message');
+    // Переключение вкладок
+    loginTab.addEventListener("click", () => {
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+        loginForm.classList.add("active");
+        registerForm.classList.remove("active");
+    });
 
-    try {
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
+    registerTab.addEventListener("click", () => {
+        registerTab.classList.add("active");
+        loginTab.classList.remove("active");
+        registerForm.classList.add("active");
+        loginForm.classList.remove("active");
+    });
 
-        const data = await response.json();
-        console.log('Ответ сервера:', data);
+    // Имитируем отправку форм
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Добро пожаловать! Вход выполнен успешно ✅");
+        loginForm.reset();
+    });
 
-        if (response.ok) {
-            localStorage.setItem('userRole', data.user.role);
-            localStorage.setItem('userName', data.user.name);
+    registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Регистрация успешно завершена! 🎉");
+        registerForm.reset();
+    });
+});
+
+// Плавная прокрутка при клике на ссылки
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navbarHeight;
             
-            console.log('Роль пользователя:', data.user.role);
-            
-            if (data.user.role === 'admin') {
-                console.log('Перенаправление на панель администратора...');
-                window.location.href = '/admin/dashboard';
-            } else {
-                console.log('Перенаправление на главную страницу...');
-                window.location.href = '/';
-            }
-        } else {
-            errorMessage.textContent = data.error || 'Неверный email или пароль';
-            errorMessage.style.display = 'block';
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
-    } catch (error) {
-        console.error('Ошибка:', error);
-        errorMessage.textContent = 'Ошибка сервера';
-        errorMessage.style.display = 'block';
+    });
+});
+
+// Скрытие/показ шапки при прокрутке
+let lastScrollTop = 0;
+let scrollThreshold = 100; // Порог прокрутки для начала скрытия
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Если в самом верху страницы - показываем шапку
+    if (scrollTop <= scrollThreshold) {
+        navbar.classList.remove('hidden');
+    } 
+    // Если прокручиваем вниз - скрываем
+    else if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+        navbar.classList.add('hidden');
+    } 
+    // Если прокручиваем вверх - показываем
+    else if (scrollTop < lastScrollTop) {
+        navbar.classList.remove('hidden');
     }
-}
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, false);
+
+
+
+
