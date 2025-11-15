@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}Главная | Аренда автомобилей | Колеса свободы{% endblock %}
+
+{% block content %}
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Добро пожаловать в «Колеса Свободы»</h1>
+            <p>
+                Мы — современная компания по аренде автомобилей, предлагающая клиентам комфорт, свободу и надёжность на дороге. 
+                Наша миссия — сделать аренду авто простой, быстрой и приятной. 
+                Каждый наш автомобиль проходит регулярное обслуживание, а прозрачные условия гарантируют доверие и уверенность.
+            </p>
+            <a href="#about-section" class="btn-primary">Узнать больше</a>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about" id="about-section">
+        <div class="about-content">
+            <h2>О нас</h2>
+            <p>
+                Компания <strong>«Колеса Свободы»</strong> — это команда профессионалов, которая заботится о вашем комфорте и безопасности. 
+                Мы предоставляем автомобили в аренду для любых целей: от деловых встреч до дальних путешествий.
+            </p>
+            <ul>
+                <li>Регулярное техническое обслуживание автомобилей</li>
+                <li>Поддержка и связь с клиентами 24/7</li>
+                <li>Удобное онлайн-бронирование</li>
+                <li>Большой выбор современных моделей</li>
+            </ul>
+        </div>
+        <!-- Раздел "Наша команда" -->
+<section class="team">
+    <div class="team-content">
+    <h2>Наша команда</h2>
+    <p class="team-intro">
+        Наш автопарк «Колеса Свободы» — это не просто автомобили, а команда профессионалов, 
+        которые создают комфорт, надёжность и свободу движения для наших клиентов.
+    </p>
+
+    <!-- Директора -->
+    <div class="directors">
+        <div class="person-card">
+            <div class="photo-placeholder">[ Фото ]</div>
+            <h3>Мария Александровна Мочалова</h3>
+            <p class="role">Директор</p>
+            <p class="bio">
+                Один из основателей компании. Эксперт в сфере транспортных услуг, 
+                вдохновитель и стратег, обеспечивающий развитие автопарка и высокий уровень сервиса.
+            </p>
+        </div>
+
+        <div class="person-card">
+            <div class="photo-placeholder">[ Фото ]</div>
+            <h3>Мария Александровна Саруханова</h3>
+            <p class="role">Директор</p>
+            <p class="bio">
+                Руководитель с современным взглядом и вниманием к деталям. 
+                Благодаря её идеям «Колеса Свободы» стали символом удобства и надёжности на дорогах.
+            </p>
+        </div>
+    </div>
+    <!-- Сотрудники -->
+    <h3 class="team-subtitle">Наши сотрудники</h3>
+    <div class="employees">
+        <div class="person-card small">
+            <div class="photo-placeholder">[ Фото ]</div>
+            <h4>Алексей Иванов</h4>
+            <p class="role">Оператор</p>
+        </div>
+
+        <div class="person-card small">
+            <div class="photo-placeholder">[ Фото ]</div>
+            <h4>Екатерина Смирнова</h4>
+            <p class="role">Администратор</p>
+        </div>
+
+        <div class="person-card small">
+            <div class="photo-placeholder">[ Фото ]</div>
+            <h4>Игорь Петров</h4>
+            <p class="role">Механик</p>
+        </div>
+    </div>
+    </div>
+</section>
+
+    </section>
+
+    <!-- Блок бронирования -->
+    <section class="booking" id="booking-section">
+        <h2>Забронировать автомобиль</h2>
+        <p>Выберите подходящую дату и забронируйте авто прямо сейчас!</p>
+        <form class="booking-form" onsubmit="return false;">
+            <label for="car">Выберите автомобиль:</label>
+            <select id="car" name="car">
+                <option value="">-- выберите модель --</option>
+                <option value="sedan">Седан</option>
+                <option value="suv">Внедорожник</option>
+                <option value="sport">Спортивный</option>
+                <option value="economy">Эконом</option>
+            </select>
+
+            <label for="start-date">Дата начала аренды:</label>
+            <input type="date" id="start-date" name="start-date">
+
+            <label for="end-date">Дата окончания аренды:</label>
+            <input type="date" id="end-date" name="end-date">
+
+            <button type="button" class="btn-primary">Забронировать</button>
+        </form>
+    </section>
+
+   
+
+<script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+<script>
+// Пользовательская функция для очень плавной прокрутки
+function smoothScrollTo(endY, duration) {
+    const startY = window.pageYOffset;
+    const distanceY = endY - startY;
+    const startTime = performance.now();
+
+    // Функция, которая определяет, насколько продвинулась прокрутка (используем easing function)
+    const easing = function(t) {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+
+    function step(currentTime) {
+        const timeElapsed = currentTime - startTime;
+        let progress = Math.min(1, timeElapsed / duration);
+        let easedProgress = easing(progress);
+
+        window.scrollTo(0, startY + distanceY * easedProgress);
+
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    }
+
+    window.requestAnimationFrame(step);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Плавная прокрутка для всех якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#' || targetId === '#!') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                // Отступ 20px + высота шапки, чтобы элемент не прятался под ней
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                
+                // *** ИСПОЛЬЗУЕМ НОВУЮ ФУНКЦИЮ С УВЕЛИЧЕННОЙ ДЛИТЕЛЬНОСТЬЮ (1000 мс) ***
+                smoothScrollTo(targetPosition, 1100); 
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

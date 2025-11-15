@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Панель администратора | Аренда автомобилей | Колеса свободы{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="admin-content">
+        <div id="bookings-section" style="display: none;">
+            <h3>Заявки на обслуживание</h3>
+            <div id="bookings-list"></div>
+        </div>
+
+        <div id="maintenance-section" style="display: none;">
+            <h3>Техническое обслуживание</h3>
+            <div id="maintenance-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Проверка прав доступа
+        document.addEventListener('DOMContentLoaded', function() {
+            const userRole = localStorage.getItem('userRole');
+            const userName = localStorage.getItem('userName');
+            
+            if (userRole !== 'admin') {
+                window.location.href = '/login';
+                return;
+            }
+            
+            if (userName) {
+                document.getElementById('adminName').textContent = 'Администратор: ' + userName;
+            }
+        });
+
+        async function showBookings() {
+            try {
+                const response = await fetch('/api/admin/bookings');
+                const bookings = await response.json();
+                
+                const bookingsList = document.getElementById('bookings-list');
+                bookingsList.innerHTML = bookings.map(booking => `
+                    <div class="booking-card">
+                        <h4>Заявка #${booking.id}</h4>
+                        <p>Клиент: ${booking.client.first_name} ${booking.client.last_name}</p>
+                        <p>Телефон: ${booking.client.phone}</p>
+                        <p>Автомобиль: ${booking.car.make} ${booking.car.model}</p>
+                        <p>Номер: ${booking.car.plate_number}</p>
+                        <p>Статус: ${booking.status}</p>
+                        <p>Дата начала: ${new Date(booking.start_date).toLocaleString()}</p>
+                        <p>Дата окончания: ${new Date(booking.end_date).toLocaleString()}</p>
+                    </div>
+                `).join('');
+                
+                document.getElementById('bookings-section').style.display = 'block';
+                document.getElementById('maintenance-section').style.display = 'none';
+            } catch (error) {
+                console.error('Ошибка при загрузке заявок:', error);
+            }
+        }
+
+        async function showMaintenance() {
+            try {
+                const response = await fetch('/api/admin/maintenance');
+                const maintenance = await response.json();
+                
+                const maintenanceList = document.getElementById('maintenance-list');
+                maintenanceList.innerHTML = maintenance.map(record => `
+                    <div class="maintenance-card">
+                        <h4>${record.car.make} ${record.car.model}</h4>
+                        <p>Номер: ${record.car.plate_number}</p>
+                        <p>Год: ${record.car.year}</p>
+                        <p>Пробег: ${record.car.mileage} км</p>
+                        <p>Статус: ${record.car.status}</p>
+                    </div>
+                `).join('');
+                
+                document.getElementById('maintenance-section').style.display = 'block';
+                document.getElementById('bookings-section').style.display = 'none';
+            } catch (error) {
+                console.error('Ошибка при загрузке данных ТО:', error);
+            }
+        }
+
+        async function handleLogout() {
+            try {
+                await fetch('/api/logout', { method: 'POST' });
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userName');
+                window.location.href = '/login';
+            } catch (error) {
+                console.error('Ошибка при выходе:', error);
+            }
+        }
+    </script>
+</body>
+</html>

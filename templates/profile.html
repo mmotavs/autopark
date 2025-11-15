@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="styleprofile.css">
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="images/logo.png" alt="Логотип Колеса Свободы" class="logo">
+            <h1>Колеса Свободы</h1>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Автопарк</a>
+            <a href="booking.html">Бронирование</a>
+            <a href="trips.html">Поездки</a>
+            <a href="profile.html" class="active">Личный кабинет</a>
+        </nav>
+    </header>
+
+    <main class="profile-page">
+        <section class="profile-card">
+            <h2 class="profile-header">Личный кабинет</h2>
+            
+            <div class="profile-content-wrapper">
+                
+                <nav class="profile-nav">
+                    <button class="nav-btn active" data-target="info-tab">Информация и редактирование</button>
+                    <button class="nav-btn" data-target="password-tab">Пароль и безопасность</button>
+                    <a href="#" class="nav-btn logout-btn">Выйти из аккаунта</a>
+                </nav>
+
+                <div class="profile-content">
+
+                    <div id="info-tab" class="tab-pane active">
+                        <h3>Ваша контактная информация</h3>
+                        
+                        <form class="edit-form">
+                            <label for="edit-name">Имя пользователя:</label>
+                            <input type="text" id="edit-name" value="Мария" required>
+
+                            <label for="edit-phone">Телефон:</label>
+                            <input type="tel" id="edit-phone" value="+7 (900) 123-45-67" required>
+
+                            <label for="edit-email">Почта (логин):</label>
+                            <input type="email" id="edit-email" value="maria@example.com" required>
+
+                            <button type="submit" class="btn-primary form-submit">Сохранить изменения</button>
+                            <button type="button" class="btn delete-btn">Удалить аккаунт</button>
+                        </form>
+                    </div>
+
+                    <div id="password-tab" class="tab-pane">
+                        <h3>Смена пароля</h3>
+                        
+                        <form class="edit-form">
+                            <label for="current-password">Текущий пароль:</label>
+                            <input type="password" id="current-password" required>
+
+                            <label for="new-password">Новый пароль:</label>
+                            <input type="password" id="new-password" required>
+
+                            <label for="confirm-password">Повторите новый пароль:</label>
+                            <input type="password" id="confirm-password" required>
+
+                            <button type="submit" class="btn-primary form-submit">Изменить пароль</button>
+                        </form>
+                    </div>
+
+                </div> </div> </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Колеса Свободы. Все права защищены.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navBtns = document.querySelectorAll('.profile-nav .nav-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetId = btn.getAttribute('data-target');
+                    if (!targetId) return; // Игнорируем ссылки/кнопки без data-target
+
+                    // Сброс активных классов
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+
+                    // Установка нового активного класса
+                    e.currentTarget.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

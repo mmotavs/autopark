@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Автомобили | Аренда автомобилей | Колеса свободы{% endblock %}
+
+{% block content %}
+
+    <!-- Раздел автопарка -->
+    <section class="cars-section">
+        <h1>Каталог автомобилей</h1>
+        <p class="cars-intro">
+            Мы предлагаем широкий выбор автомобилей для любых целей — от деловых поездок до путешествий. 
+            Все машины проходят регулярное техническое и находятся в идеальном состоянии.
+        </p>
+
+        <!-- Фильтр (пока неактивный) -->
+        <div class="cars-filter">
+            <select>
+                <option value="">Тип авто</option>
+                <option value="sedan">Седан</option>
+                <option value="suv">Внедорожник</option>
+                <option value="sport">Спортивный</option>
+                <option value="economy">Эконом</option>
+            </select>
+
+            <select>
+                <option value="">Сортировать по</option>
+                <option value="price-low">Цене: по возрастанию</option>
+                <option value="price-high">Цене: по убыванию</option>
+            </select>
+        </div>
+
+        <!-- Сетка автомобилей -->
+        <div class="cars-grid">
+            <!-- Машина 1 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/b9/c9/a2/b9c9a22952a7febe2b8fff53463e3ac5.jpg" alt="Toyota Camry" class="car-img">
+                <h3>Toyota Camry</h3>
+                <p>Комфортный седан бизнес-класса для городских поездок и деловых встреч.</p>
+                <div class="car-details">
+                    <span>Седан</span>
+                    <span>от 4200 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 2 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/6d/35/d5/6d35d5aefc6e8968bfea88264bae49b5.jpg" alt="BMW X5" class="car-img">
+                <h3>BMW X5</h3>
+                <p>Престижный внедорожник с максимальным комфортом и мощным двигателем.</p>
+                <div class="car-details">
+                    <span>Внедорожник</span>
+                    <span>от 8500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 3 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/05/60/27/0560274d90d8f2f606c0fc29478a2c0b.jpg" alt="Mazda CX-5" class="car-img">
+                <h3>Mazda CX-5</h3>
+                <p>Стильный кроссовер с отличной управляемостью и высоким уровнем безопасности.</p>
+                <div class="car-details">
+                    <span>Кроссовер</span>
+                    <span>от 5000 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 4 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/85/58/2e/85582e48c7274876b45aa0e084f272c6.jpg" alt="Kia Rio" class="car-img">
+                <h3>Kia Rio</h3>
+                <p>Надежный и экономичный автомобиль для повседневных поездок по городу.</p>
+                <div class="car-details">
+                    <span>Эконом</span>
+                    <span>от 2500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 5 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/1200x/41/e3/03/41e303628044e0b5b38f2f5248c2410c.jpg" alt="Mercedes E-Class" class="car-img">
+                <h3>Mercedes E-Class</h3>
+                <p>Элегантный седан премиум-класса для особых случаев и бизнес-поездок.</p>
+                <div class="car-details">
+                    <span>Бизнес</span>
+                    <span>от 7800 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+
+            <!-- Машина 6 -->
+            <div class="car-card">
+                <img src="https://i.pinimg.com/736x/2a/d7/a9/2ad7a95caf42b7caa074738fc8517452.jpg" alt="Porsche 911" class="car-img">
+                <h3>Porsche 911</h3>
+                <p>Легендарный спортивный автомобиль для тех, кто выбирает скорость и стиль.</p>
+                <div class="car-details">
+                    <span>Спортивный</span>
+                    <span>от 12500 ₽/сутки</span>
+                </div>
+                <a href="booking.html" class="btn-primary">Забронировать</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

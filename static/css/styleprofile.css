@@ -1,0 +1,295 @@
+/* ======================================================= */
+/* 🚀 ИМПОРТ ПЕРЕМЕННЫХ И ОБЩИЕ СТИЛИ */
+/* ======================================================= */
+
+:root {
+    --primary-gold: #c9a961;
+    --dark-gold: #a88b4a;
+    --deep-charcoal: #1a1a1a;
+    --soft-black: #2d2d2d;
+    --warm-white: #fafaf8;
+    --cream: #f5f3ef;
+    --text-primary: #2d2d2d;
+    --text-secondary: #6b6b6b;
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Сброс */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--warm-white);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+}
+
+a:hover {
+    color: var(--deep-charcoal);
+}
+
+/* ======================================================= */
+/* 📌 ШАПКА И МЕНЮ (HEADER) - ИСПОЛЬЗУЕМ СТИЛИ ВАШЕГО САЙТА */
+/* ======================================================= */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1.2rem 5%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-title h1 {
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: var(--deep-charcoal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    font-weight: 400;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.menu a.active {
+    color: var(--primary-gold);
+    font-weight: 500;
+}
+
+/* ======================================================= */
+/* 👤 ЛИЧНЫЙ КАБИНЕТ (MAIN CONTENT) */
+/* ======================================================= */
+
+.profile-page {
+    padding: 10rem 5% 8rem; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+}
+
+.profile-card {
+    max-width: 1000px;
+    width: 100%;
+    /* Удаляем фон с внешней карточки, чтобы фон задавал внутренний wrapper */
+    background: transparent; 
+}
+
+.profile-header {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    color: var(--deep-charcoal);
+    letter-spacing: 2px;
+}
+
+/* --- Обертка для навигации и контента (Основной блок) --- */
+.profile-content-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    background-color: var(--cream); /* Светлая подложка для блока */
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 1. Навигация (Боковое меню) --- */
+.profile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 250px;
+    padding-top: 1rem;
+    background-color: var(--warm-white); /* Фон для навигации */
+    padding: 1.5rem;
+}
+
+.profile-nav .nav-btn {
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+}
+
+.profile-nav .nav-btn:hover {
+    background-color: rgba(201, 169, 97, 0.05);
+    color: var(--deep-charcoal);
+}
+
+.profile-nav .nav-btn.active {
+    background-color: rgba(201, 169, 97, 0.1);
+    color: var(--deep-charcoal);
+    border-left: 3px solid var(--primary-gold);
+}
+
+.nav-btn.logout-btn {
+    margin-top: 1.5rem;
+    color: var(--text-secondary); /* Ссылки-кнопки */
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.nav-btn.logout-btn:hover {
+    color: #cc0000;
+    background-color: rgba(204, 0, 0, 0.05);
+}
+
+/* --- 2. Основной контент --- */
+.profile-content {
+    flex-grow: 1;
+    background-color: var(--warm-white); /* Фон для активной вкладки */
+    padding: 3rem;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--deep-charcoal);
+    border-bottom: 2px solid var(--primary-gold);
+    padding-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+/* --- Формы и элементы ввода --- */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.edit-form label {
+    font-weight: 500;
+    color: var(--deep-charcoal);
+    margin-bottom: -0.5rem;
+    font-size: 0.95rem;
+}
+
+.edit-form input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #d9d7d3;
+    border-radius: 0;
+    font-size: 1rem;
+    background-color: var(--warm-white);
+    transition: var(--transition-smooth);
+    font-family: inherit;
+}
+
+.edit-form input:focus {
+    border-color: var(--primary-gold);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+}
+
+/* Кнопка "Сохранить/Изменить пароль" (Золотая) */
+.btn-primary.form-submit {
+    display: inline-block;
+    background-color: var(--primary-gold);
+    color: var(--deep-charcoal);
+    padding: 1rem 3rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+    border: 1px solid var(--primary-gold);
+    cursor: pointer;
+    margin-top: 1rem;
+    width: auto;
+    align-self: flex-start;
+}
+
+.btn-primary.form-submit:hover {
+    background-color: var(--dark-gold);
+    color: var(--warm-white);
+}
+
+/* Кнопка "Удалить аккаунт" (Красная) */
+.btn.delete-btn {
+    background-color: #39120f;
+    color: var(--warm-white);
+    padding: 1rem 2rem;
+    border:#39120f;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+    margin-top: 1rem;
+    width: auto;
+    align-self: flex-start;
+}
+
+.btn.delete-btn:hover {
+    background-color: #a01919;
+    border-color: #120808;
+}
+
+/* ======================================================= */
+/* 🦶 ФУТЕР (FOOTER) */
+/* ======================================================= */
+footer {
+    text-align: center;
+    padding: 2rem 5%;
+    background-color: var(--deep-charcoal);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}

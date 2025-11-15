@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Бронирование автомобиля | Аренда автомобилей | Колеса свободы{% endblock %}
+
+{% block content %}
+
+    <!-- Контент -->
+    <section class="booking-section">
+        <h1>Бронирование автомобиля</h1>
+        <p class="booking-subtitle">Заполните форму, и мы свяжемся с вами для подтверждения аренды.</p>
+
+        <form class="booking-form" id="bookingForm">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" placeholder="Ваше имя" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="example@mail.ru" required>
+            </div>
+
+            <div class="form-group">
+                <label for="car">Выберите автомобиль</label>
+                <select id="car" required>
+                    <option value="">-- Выберите авто --</option>
+                    <option value="toyota_camry">Toyota Camry</option>
+                    <option value="kia_sportage">KIA Sportage</option>
+                    <option value="bmw_x5">BMW X5</option>
+                    <option value="audi_a4">Audi A4</option>
+                </select>
+            </div>
+
+            <div class="form-dates">
+                <div class="form-group">
+                    <label for="start-date">Дата начала аренды</label>
+                    <input type="date" id="start-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date">Дата окончания аренды</label>
+                    <input type="date" id="end-date" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Отправить заявку</button>
+        </form>
+    </section>
+{% endblock %}

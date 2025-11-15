@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Мои поездки | Аренда автомобилей | Колеса свободы{% endblock %}
+
+{% block content %}
+            <a href="login.html">Личный кабинет</a>
+        </nav>
+    </header>
+
+    <!-- Контент -->
+    <section class="trips-section">
+        <h1>Мои поездки</h1>
+        <p class="trips-subtitle">История ваших бронирований</p>
+
+        <div class="trips-table-wrapper">
+            <table class="trips-table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Автомобиль</th>
+                        <th>Дата начала</th>
+                        <th>Дата окончания</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Toyota Camry</td>
+                        <td>12.09.2025</td>
+                        <td>15.09.2025</td>
+                        <td><span class="status completed">Завершено</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>KIA Sportage</td>
+                        <td>01.10.2025</td>
+                        <td>07.10.2025</td>
+                        <td><span class="status active">Активно</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>BMW X5</td>
+                        <td>20.10.2025</td>
+                        <td>25.10.2025</td>
+                        <td><span class="status pending">Ожидает подтверждения</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+ {% endblock %}
