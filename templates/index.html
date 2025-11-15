@@ -1,8 +1,24 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Главная | Колеса Свободы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип Колеса Свободы" class="logo-img">
+            <div class="logo-text">Колеса Свободы</div>
+        </div>
 
-{% block title %}Главная | Аренда автомобилей | Колеса свободы{% endblock %}
-
-{% block content %}
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Каталог</a>
+            <a href="login.html">Вход | Регистрация</a>           
+        </nav>
+    </header>
 
     <!-- Главный экран -->
     <section class="hero">
@@ -89,29 +105,7 @@
 
     </section>
 
-    <!-- Блок бронирования -->
-    <section class="booking" id="booking-section">
-        <h2>Забронировать автомобиль</h2>
-        <p>Выберите подходящую дату и забронируйте авто прямо сейчас!</p>
-        <form class="booking-form" onsubmit="return false;">
-            <label for="car">Выберите автомобиль:</label>
-            <select id="car" name="car">
-                <option value="">-- выберите модель --</option>
-                <option value="sedan">Седан</option>
-                <option value="suv">Внедорожник</option>
-                <option value="sport">Спортивный</option>
-                <option value="economy">Эконом</option>
-            </select>
-
-            <label for="start-date">Дата начала аренды:</label>
-            <input type="date" id="start-date" name="start-date">
-
-            <label for="end-date">Дата окончания аренды:</label>
-            <input type="date" id="end-date" name="end-date">
-
-            <button type="button" class="btn-primary">Забронировать</button>
-        </form>
-    </section>
+    
 
    
 
@@ -166,4 +160,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-{% endblock %}
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <!-- О компании -->
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>
+                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
+                    создающая незабываемые впечатления от каждой поездки.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Telegram">📘</a>
+                </div>
+            </div>
+
+            <!-- Услуги -->
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="#">Автопарк</a></li>
+                    <li><a href="#">Онлайн бронирование</a></li>
+                    <li><a href="#">Маршруты поездок</a></li>
+                    <li><a href="#">Корпоративная аренда</a></li>
+                    <li><a href="#">Долгосрочная аренда</a></li>
+                </ul>
+            </div>
+
+            <!-- Информация -->
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#">Условия аренды</a></li>
+                    <li><a href="#">Правила и положения</a></li>
+                    <li><a href="#">Страхование</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                    <li><a href="#">Наша команда</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
+                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
+                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
+                    <li><a href="#">Режим работы: 24/7</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Нижняя часть футера -->
+        <div class="footer-bottom">
+            <p>© 2025 Колеса Свободы. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Карта сайта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

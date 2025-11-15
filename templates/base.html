@@ -22,6 +22,7 @@
             <div class="menu">
                 <a href="{{ url_for('index') }}">Главная</a>
                 <a href="{{ url_for('cars') }}">Автомобили</a>
+                {% if session.get('user_id') %}
                 <a href="{{ url_for('booking_page') }}">Бронирование</a>
                 {% if session.get('user_id') %}
                     <a href="{{ url_for('trips') }}">Мои поездки</a>

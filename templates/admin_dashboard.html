@@ -1,26 +1,79 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Панель администратора | Колеса Свободы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://i.pinimg.com/1200x/f6/98/9d/f6989d8bd40e77f43fcb3290bb34b66c.jpg" alt="Логотип Колеса Свободы" class="logo-img">
+            <div class="logo-text">Колеса Свободы</div>
+        </div>
 
-{% block title %}Панель администратора | Аренда автомобилей | Колеса свободы{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
-{% endblock %}
-
-{% block content %}
+        <nav class="menu">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Каталог</a>
+            <a href="booking.html">Бронирование</a> 
+            <a href="trips.html">Поездки</a>   
+            <a href="admin_dashboard.html">Панель администратора</a> 
+            <a href="profile.html">Личный кабинет</a>           
+        </nav>
+    </header>
 
     <div class="admin-content">
         <div id="bookings-section" style="display: none;">
             <h3>Заявки на обслуживание</h3>
             <div id="bookings-list"></div>
         </div>
+    </div>  
+    <div class="admin-content">
+            <h2 class="admin-header-title">Панель администратора</h2>
+            <span id="adminName" class="admin-name">Администратор: Мария</span>    
 
-        <div id="maintenance-section" style="display: none;">
-            <h3>Техническое обслуживание</h3>
-            <div id="maintenance-list"></div>
-        </div>
-    </div>
+                <section id="bookings-section" class="content-section active">
+                    <h3 class="subsection-header">Общая статистика</h3>                   
+                    <div class="data-grid">
+                        <div class="data-card stat-card">
+                            <h4>Новых заявок</h4>
+                            <p class="stat-number primary-gold-text">12</p>
+                        </div>
+                        <div class="data-card stat-card">
+                            <h4>Активных аренд</h4>
+                            <p class="stat-number deep-charcoal-text">45</p>
+                        </div>
+                        <div class="data-card stat-card">
+                            <h4>На обслуживании</h4>
+                            <p class="stat-number red-text">5</p>
+                        </div>
+                    </div>
 
-    <script>
+                    <h3 class="subsection-header">Последние заявки</h3>
+                    <div id="bookings-list" class="data-list">
+                        <div class="booking-card data-card">
+                            <h4>Заявка #845 | Седан Toyota</h4>
+                            <p>Клиент: **Иванов И.** | Телефон: +7 (911) 789-00-11</p>
+                            <p>Период: 12.11.2025 - 15.11.2025</p>
+                            <span class="status-tag status-new">Новая</span>
+                            <button class="action-btn">Обработать</button>
+                        </div>
+                        <div class="booking-card data-card">
+                            <h4>Заявка #844 | Внедорожник Nissan</h4>
+                            <p>Клиент: **Смирнова А.** | Телефон: +7 (921) 123-45-67</p>
+                            <p>Период: 05.11.2025 - 08.11.2025</p>
+                            <span class="status-tag status-approved">Подтверждена</span>
+                            <button class="action-btn">Просмотр</button>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+        <!-- <script>
         // Проверка прав доступа
         document.addEventListener('DOMContentLoaded', function() {
             const userRole = localStorage.getItem('userRole');
@@ -95,6 +148,73 @@
                 console.error('Ошибка при выходе:', error);
             }
         }
-    </script>
+    </script> -->
+
+
+<script defer src="{{ url_for('static', filename='js/login.js') }}"></script>
+ 
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-main">
+            <!-- О компании -->
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>
+                    «Колеса Свободы» — премиальная служба аренды автомобилей, 
+                    создающая незабываемые впечатления от каждой поездки.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Telegram">📘</a>
+                </div>
+            </div>
+
+            <!-- Услуги -->
+            <div class="footer-section">
+                <h3>Услуги</h3>
+                <ul>
+                    <li><a href="#">Автопарк</a></li>
+                    <li><a href="#">Онлайн бронирование</a></li>
+                    <li><a href="#">Маршруты поездок</a></li>
+                    <li><a href="#">Корпоративная аренда</a></li>
+                    <li><a href="#">Долгосрочная аренда</a></li>
+                </ul>
+            </div>
+
+            <!-- Информация -->
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#">Условия аренды</a></li>
+                    <li><a href="#">Правила и положения</a></li>
+                    <li><a href="#">Страхование</a></li>
+                    <li><a href="#">Часто задаваемые вопросы</a></li>
+                    <li><a href="#">Наша команда</a></li>
+                </ul>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="tel:+79999999999">+7 (999) 999-99-99</a></li>
+                    <li><a href="mailto:info@wheels-freedom.ru">info@wheels-freedom.ru</a></li>
+                    <li><a href="#">Москва, ул. Охотный ряд, 2</a></li>
+                    <li><a href="#">Режим работы: 24/7</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Нижняя часть футера -->
+        <div class="footer-bottom">
+            <p>© 2025 Колеса Свободы. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Условия использования</a>
+                <a href="#">Карта сайта</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
