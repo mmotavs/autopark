@@ -408,6 +408,7 @@ transform: translateY(-2px);
     color: var(--text-secondary);
     font-size: 0.85rem;
     border: 3px solid var(--primary-gold);
+    object-fit: cover
 }
 
 .person-card h3 {
@@ -430,6 +431,7 @@ transform: translateY(-2px);
     color: var(--text-secondary);
     line-height: 1.8;
     font-size: 1rem;
+    text-align: justify;
 }
 
 /* Сотрудники */

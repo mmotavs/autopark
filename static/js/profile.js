@@ -1,31 +1,61 @@
-// Симуляция данных пользователя (в будущем — из базы данных)
+// Переключение вкладок на странице профиля
 document.addEventListener("DOMContentLoaded", () => {
-    const userName = document.getElementById("userName");
-    const userEmail = document.getElementById("userEmail");
+    // Функция переключения вкладок
+    const navBtns = document.querySelectorAll(".nav-btn");
+    const tabPanes = document.querySelectorAll(".tab-pane");
 
-    // Пример: данные могут быть сохранены после входа
-    const userData = JSON.parse(localStorage.getItem("userData")) || {
-        name: "Мария Александровна",
-        email: "maria@example.com"
-    };
+    navBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            // Если это ссылка выхода, не переключаем вкладку
+            if (btn.classList.contains("logout-btn")) {
+                return;
+            }
 
-    userName.textContent = userData.name;
-    userEmail.textContent = userData.email;
+            e.preventDefault();
 
-    // Выход из аккаунта
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        alert("Вы вышли из аккаунта!");
-        localStorage.removeItem("userData");
-        window.location.href = "login.html";
+            // Получаем ID целевой вкладки из data-target
+            const targetId = btn.getAttribute("data-target");
+            
+            // Если это кнопка без data-target, пропускаем
+            if (!targetId) return;
+
+            // Убираем класс active у всех кнопок и вкладок
+            navBtns.forEach(b => b.classList.remove("active"));
+            tabPanes.forEach(pane => pane.classList.remove("active"));
+
+            // Добавляем класс active к нажатой кнопке
+            btn.classList.add("active");
+
+            // Показываем целевую вкладку
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) {
+                targetPane.classList.add("active");
+            }
+        });
     });
 
-    // Удаление аккаунта
-    document.getElementById("deleteBtn").addEventListener("click", () => {
-        const confirmDelete = confirm("Вы уверены, что хотите удалить аккаунт?");
-        if (confirmDelete) {
-            alert("Аккаунт удалён.");
+    // Обработчик выхода из аккаунта
+    const logoutBtn = document.querySelector(".logout-btn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Вы вышли из аккаунта!");
             localStorage.removeItem("userData");
-            window.location.href = "index.html";
-        }
-    });
+            window.location.href = "{{ url_for('login') }}";
+        });
+    }
+
+    // Обработчик удаления аккаунта
+    const deleteBtn = document.querySelector(".delete-btn");
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const confirmDelete = confirm("Вы уверены, что хотите удалить аккаунт?");
+            if (confirmDelete) {
+                alert("Аккаунт удалён.");
+                localStorage.removeItem("userData");
+                window.location.href = "{{ url_for('index') }}";
+            }
+        });
+    }
 });
